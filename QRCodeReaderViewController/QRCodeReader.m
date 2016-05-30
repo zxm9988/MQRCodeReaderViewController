@@ -95,11 +95,13 @@
   NSSet *avbSet =
       [NSSet setWithArray:_metadataOutput.availableMetadataObjectTypes];
   NSSet *userSet = [NSSet setWithArray:_metadataObjectTypes];
-  if ([avbSet intersectsSet:userSet]) {
+    if ([avbSet intersectsSet:userSet]) {
     [_metadataOutput setMetadataObjectTypes:_metadataObjectTypes];
   } else {
-    [_metadataOutput
-        setMetadataObjectTypes:_metadataOutput.availableMetadataObjectTypes];
+      if (_metadataOutput.availableMetadataObjectTypes) {
+          [_metadataOutput
+           setMetadataObjectTypes:_metadataOutput.availableMetadataObjectTypes];
+      }
   }
 
   [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
